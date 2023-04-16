@@ -11,7 +11,7 @@ local common_config = {
 	},
 
 	basic_keys = {
-		leader_key = ",",
+		leader_key = " ",
 
 		-- COMMAND
 		c_prev_item = "<C-k>",
@@ -56,8 +56,8 @@ local common_config = {
 
 	nvim_tree_keys = {
 		toggle = "<leader>m",
-		edit = { "o", "<2-LeftMouse>" },
-		system_open = "<CR>",
+		edit = { "<CR>", "<2-LeftMouse>" },
+		system_open = "o",
 		vsplit = "sv",
 		hsplit = "sh",
 		toggle_git_ignored = "i",
@@ -129,6 +129,26 @@ local common_config = {
 			line = "gc",
 			block = "gb",
 		},
+	},
+
+	telescope_keys = {
+		find_files = "<C-p>",
+		live_grep = "<C-f>",
+
+		-- move up/down
+		move_selection_next = "<C-j>",
+		move_selection_prev = "<C-k>",
+
+		-- history record
+		cycle_history_next = "<Down>",
+		cycle_history_prev = "<Up>",
+
+		-- colse the window
+		close = "<Esc>",
+
+		-- preview scrolling
+		preview_scrolling_up = "<C-u>",
+		preview_scrolling_down = "<C-d>",
 	},
 }
 

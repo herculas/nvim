@@ -1,9 +1,14 @@
-require("basic")                            -- basic settings
-require("utils.global")                     -- global settings
+-- basic settings
+require("basic")
 
-require("shortcut")                         -- shortcuts
+-- global settings
+require("utils.global")
 
-require("theme")                            -- colorschemes
+-- shortcuts
+require("shortcut")
 
-require("plugins")                          -- plugin settings
-require("lsp")                              -- LSP settings
+-- plugin settings
+require("plugins")
+
+-- language server settings
+require("lsp")

@@ -33,8 +33,14 @@ packer.startup({
 		-- Packer.nvim: the package manager for neovim
 		use("wbthomason/packer.nvim")
 
-		-- gruvbox.nvim: colorscheme for neovim
-		use("ellisonleao/gruvbox.nvim")
+		-- catppuccin/nvim: colorscheme for neovim
+		use({
+			"catppuccin/nvim",
+			as = "catppuccin",
+			config = function()
+				require("plugins.colorscheme")
+			end,
+		})
 
 		-- nvim-tree: side column file explorer
 		use({
@@ -48,12 +54,13 @@ packer.startup({
 		-- bufferline: header tab interface
 		use({
 			"akinsho/bufferline.nvim",
+			after = "catppuccin",
 			requires = {
 				"nvim-tree/nvim-web-devicons",
 				"moll/vim-bbye",
 			},
 			config = function()
-				require("plugins/bufferline")
+				require("plugins.bufferline")
 			end,
 		})
 
@@ -65,7 +72,38 @@ packer.startup({
 				"arkav/lualine-lsp-progress",
 			},
 			config = function()
-				require("plugins/lualine")
+				require("plugins.lualine")
+			end,
+		})
+
+		-- telescope: fuzzy searching and file manipulation
+		use({
+			"nvim-telescope/telescope.nvim",
+			requires = {
+				"nvim-lua/plenary.nvim",
+				"LinArcX/telescope-env.nvim",
+				"nvim-telescope/telescope-ui-select.nvim",
+			},
+			config = function()
+				require("plugins.telescope")
+			end,
+		})
+
+		-- dashboard-nvim: dashboard settings
+		use({
+			"glepnir/dashboard-nvim",
+			event = "VimEnter",
+			requires = "nvim-tree/nvim-web-devicons",
+			config = function()
+				require("plugins.dashboard")
+			end,
+		})
+
+		-- projects.nvim: all-in-one project management
+		use({
+			"ahmedkhalf/project.nvim",
+			config = function()
+				require("plugins.project")
 			end,
 		})
 
@@ -90,6 +128,7 @@ packer.startup({
 			end,
 		})
 
+		-- nvim-autopairs: automatically generate paired chars
 		use({
 			"windwp/nvim-autopairs",
 			config = function()
@@ -97,12 +136,22 @@ packer.startup({
 			end,
 		})
 
+		-- Comment.nvim: fast commenting and uncommenting
 		use({
 			"numToStr/Comment.nvim",
 			config = function()
 				require("plugins.comment")
 			end,
 		})
+
+		-- VimTeX: vim configuration for LaTeX
+		use({
+			"lervag/vimtex",
+			config = function()
+				require("plugins.vimtex")
+			end,
+		})
+
 		-------------------------------------------------------------------------------------------------------------------
 		-- LSP-relative plugins
 		-------------------------------------------------------------------------------------------------------------------

@@ -1,31 +1,35 @@
 local config = require("config")
 if config.bufferline_keys == nil or not config.flags.enable_buffer_line then
-  return
+	return
 end
 
 local bufferline = require_plugin("bufferline")
+if bufferline == nil then
+	return
+end
 
 -- bufferline configuration
 bufferline.setup({
-  options = {
-    close_command = "Bdelete! %d",                          -- close tabs
-    right_mouse_command = "Bdelete! %d",                    -- close tabs using mouse
-    offsets = {                                             -- side column for nvim-tree
-      filetype = "NvimTree",
-      text = "File Explorer",
-      highlight = "Directory",
-      text_align = "left",
-    },
-    diagnostics = "nvim_lsp",                               -- LSP
-    diagnostics_indicator = function(count, level, diagnostics_dict, context)
-      local s = " "
-      for e, n in pairs(diagnostics_dict) do
-        local sym = e == "error" and " " or (e == "warning" and " " or "")
-        s = s .. n .. sym
-      end
-      return s
-    end,
-  },
+	options = {
+		close_command = "Bdelete! %d", -- close tabs
+		right_mouse_command = "Bdelete! %d", -- close tabs using mouse
+		offsets = { -- side column for nvim-tree
+			filetype = "NvimTree",
+			text = "File Explorer",
+			highlight = "Directory",
+			text_align = "left",
+		},
+		diagnostics = "nvim_lsp", -- LSP
+		diagnostics_indicator = function(_, _, diagnostics_dict, _)
+			local s = " "
+			for e, n in pairs(diagnostics_dict) do
+				local sym = e == "error" and " " or (e == "warning" and " " or "")
+				s = s .. n .. sym
+			end
+			return s
+		end,
+	},
+	highlights = require("catppuccin.groups.integrations.bufferline").get(),
 })
 
 -----------------------------------------------------------------------------------------------------------------------
