@@ -21,7 +21,10 @@ return {
 
 	-- annotate (custom command for annotating equation derivations)
 	s(
-		{ trig = "ann", snippetType = "autosnippet" },
+		{
+			trig = "ann",
+			snippetType = "autosnippet",
+		},
 		fmta(
 			[[
       \annotate{<>}{<>}
@@ -35,7 +38,11 @@ return {
 
 	-- reference
 	s(
-		{ trig = " RR", snippetType = "autosnippet", wordTrig = false },
+		{
+			trig = " RR",
+			snippetType = "autosnippet",
+			wordTrig = false,
+		},
 		fmta(
 			[[
       ~\ref{<>}
@@ -48,7 +55,10 @@ return {
 
 	-- documentclass
 	s(
-		{ trig = "dcc", snippetType = "autosnippet" },
+		{
+			trig = "dcc",
+			snippetType = "autosnippet",
+		},
 		fmta(
 			[[
       \documentclass[<>]{<>}
@@ -58,12 +68,17 @@ return {
 				i(2, "article"),
 			}
 		),
-		{ condition = line_begin }
+		{
+			condition = line_begin,
+		}
 	),
 
 	-- use a latex package
 	s(
-		{ trig = "pack", snippetType = "autosnippet" },
+		{
+			trig = "pack",
+			snippetType = "autosnippet",
+		},
 		fmta(
 			[[
       \usepackage{<>}
@@ -72,12 +87,17 @@ return {
 				d(1, get_visual),
 			}
 		),
-		{ condition = line_begin }
+		{
+			condition = line_begin,
+		}
 	),
 
 	-- input a latex file
 	s(
-		{ trig = "inn", snippetType = "autosnippet" },
+		{
+			trig = "inn",
+			snippetType = "autosnippet",
+		},
 		fmta(
 			[[
       \input{<>}
@@ -86,12 +106,17 @@ return {
 				i(1),
 			}
 		),
-		{ condition = line_begin }
+		{
+			condition = line_begin,
+		}
 	),
 
 	-- label
 	s(
-		{ trig = "lbl", snippetType = "autosnippet" },
+		{
+			trig = "lbl",
+			snippetType = "autosnippet",
+		},
 		fmta(
 			[[
       \label{<>}
@@ -104,7 +129,10 @@ return {
 
 	-- hphantom
 	s(
-		{ trig = "hpp", snippetType = "autosnippet" },
+		{
+			trig = "hpp",
+			snippetType = "autosnippet",
+		},
 		fmta(
 			[[
       \hphantom{<>}
@@ -116,16 +144,22 @@ return {
 	),
 
 	s(
-		{ trig = "nc" },
+		{
+			trig = "nc",
+		},
 		fmta([[\newcommand{<>}{<>}]], {
 			i(1),
 			i(2),
 		}),
-		{ condition = line_begin }
+		{
+			condition = line_begin,
+		}
 	),
 
 	s(
-		{ trig = "url" },
+		{
+			trig = "url",
+		},
 		fmta([[\url{<>}]], {
 			d(1, get_visual),
 		})
@@ -133,7 +167,9 @@ return {
 
 	-- vspace
 	s(
-		{ trig = "vs" },
+		{
+			trig = "vs",
+		},
 		fmta([[\vspace{<>}]], {
 			d(1, get_visual),
 		})
@@ -141,7 +177,10 @@ return {
 
 	-- chapter
 	s(
-		{ trig = "h1", snippetType = "autosnippet" },
+		{
+			trig = "h1",
+			snippetType = "autosnippet",
+		},
 		fmta([[\chapter{<>}]], {
 			d(1, get_visual),
 		})
@@ -149,7 +188,10 @@ return {
 
 	-- section
 	s(
-		{ trig = "h2", snippetType = "autosnippet" },
+		{
+			trig = "h2",
+			snippetType = "autosnippet",
+		},
 		fmta([[\section{<>}]], {
 			d(1, get_visual),
 		})
@@ -157,7 +199,10 @@ return {
 
 	-- subsection
 	s(
-		{ trig = "h3", snippetType = "autosnippet" },
+		{
+			trig = "h3",
+			snippetType = "autosnippet",
+		},
 		fmta([[\subsection{<>}]], {
 			d(1, get_visual),
 		})
@@ -165,7 +210,10 @@ return {
 
 	-- subsubsection
 	s(
-		{ trig = "h4", snippetType = "autosnippet" },
+		{
+			trig = "h4",
+			snippetType = "autosnippet",
+		},
 		fmta([[\subsubsection{<>}]], {
 			d(1, get_visual),
 		})

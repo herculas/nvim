@@ -21,12 +21,12 @@ return {
 	-- left/right parentheses
 	s(
 		{
-			trig = "([^%a])l%[",
+			trig = "([^%a])l%(",
 			regTrig = true,
 			wordTrig = false,
 			snippetType = "autosnippet",
 		},
-		fmta("<>\\left[<>\\right]", {
+		fmta("<>\\left(<>\\right", {
 			f(function(_, snip)
 				return snip.captures[1]
 			end),
@@ -42,12 +42,19 @@ return {
 			wordTrig = false,
 			snippetType = "autosnippet",
 		},
-		fmta("<>\\left[<>\\right]", {
-			f(function(_, snip)
-				return snip.captures[1]
-			end),
-			d(1, get_visual),
-		})
+		fmta(
+			[[
+        <>\left[
+          <>
+        \right
+      ]],
+			{
+				f(function(_, snip)
+					return snip.captures[1]
+				end),
+				d(1, get_visual),
+			}
+		)
 	),
 
 	-- left/right curly braces
