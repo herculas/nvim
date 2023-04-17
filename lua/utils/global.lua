@@ -2,7 +2,7 @@
 function _G.require_plugin(name)
 	local status, plugin = pcall(require, name)
 	if not status then
-		vim.notify("[Plugins] not found: " .. name)
+		vim.notify("[Plugins] not found: " .. name, vim.log.levels.ERROR)
 		return nil
 	end
 	return plugin

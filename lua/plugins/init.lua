@@ -33,6 +33,14 @@ packer.startup({
 		-- Packer.nvim: the package manager for neovim
 		use("wbthomason/packer.nvim")
 
+		-- nvim-notify: override the default notification presentation
+		use({
+			"rcarriga/nvim-notify",
+			config = function()
+				require("plugins.notify")
+			end,
+		})
+
 		-- catppuccin/nvim: colorscheme for neovim
 		use({
 			"catppuccin/nvim",
@@ -152,6 +160,14 @@ packer.startup({
 			end,
 		})
 
+		-- gitsigns.nvim: the sign for git status
+		use({
+			"lewis6991/gitsigns.nvim",
+			config = function()
+				require("plugins.gitsigns")
+			end,
+		})
+
 		-------------------------------------------------------------------------------------------------------------------
 		-- LSP-relative plugins
 		-------------------------------------------------------------------------------------------------------------------
@@ -166,16 +182,21 @@ packer.startup({
 		-- complete sources
 		use({ "hrsh7th/vim-vsnip" }) -- complete snippet engine
 		use({ "hrsh7th/cmp-vsnip" }) -- complete source for snippet
-		use({ "hrsh7th/cmp-nvim-lsp" }) --      name = nvim_lsp,
-		use({ "hrsh7th/cmp-buffer" }) --      name = buffer,
-		use({ "hrsh7th/cmp-path" }) --      name = path,
-		use({ "hrsh7th/cmp-cmdline" }) --      name = cmdline,
-		use({ "hrsh7th/cmp-nvim-lsp-signature-help" }) --      name = nvim_lsp_signature_help,
-		use({ "rafamadriz/friendly-snippets" }) -- common programming language snippets
+		use({ "hrsh7th/cmp-nvim-lsp" })
+		use({ "hrsh7th/cmp-buffer" })
+		use({ "hrsh7th/cmp-path" })
+		use({ "hrsh7th/cmp-cmdline" })
+		use({ "hrsh7th/cmp-nvim-lsp-signature-help" })
 
-		-- snippet engine
-		use({ "L3MON4D3/LuaSnip" })
+		-- snippet engine and clips
+		use({
+			"L3MON4D3/LuaSnip",
+			config = function()
+				require("plugins.luasnip")
+			end,
+		})
 		use({ "saadparwaiz1/cmp_luasnip" })
+		use({ "rafamadriz/friendly-snippets" }) -- common programming language snippets
 
 		-- misc
 		use({ "onsails/lspkind-nvim" }) -- UI enhancement
