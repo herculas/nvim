@@ -1,4 +1,7 @@
 local lualine = require_plugin("lualine")
+if lualine == nil then
+	return
+end
 
 lualine.setup({
 	options = { -- style configurations

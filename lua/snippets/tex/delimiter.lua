@@ -16,17 +16,16 @@ local f = luasnip.function_node
 local d = luasnip.dynamic_node
 local fmta = require("luasnip.extras.fmt").fmta
 
+-- delemiters in LaTeX
 return {
 
-	-- left/right parentheses
 	s(
 		{
-			trig = "([^%a])l%(",
-			regTrig = true,
-			wordTrig = false,
-			snippetType = "autosnippet",
+			trig = "l1",
+			name = "Parentheses",
+			dscr = "Paired parentheses with automatic size",
 		},
-		fmta("<>\\left(<>\\right", {
+		fmta("<>\\left(<>\\right)", {
 			f(function(_, snip)
 				return snip.captures[1]
 			end),
@@ -34,36 +33,25 @@ return {
 		})
 	),
 
-	-- left/right square braces
 	s(
 		{
-			trig = "([^%a])l%[",
-			regTrig = true,
-			wordTrig = false,
-			snippetType = "autosnippet",
+			trig = "l2",
+			name = "Square Brackets",
+			dscr = "Sqaure brackets with automatic size",
 		},
-		fmta(
-			[[
-        <>\left[
-          <>
-        \right
-      ]],
-			{
-				f(function(_, snip)
-					return snip.captures[1]
-				end),
-				d(1, get_visual),
-			}
-		)
+		fmta("<>\\left[<>\\right]", {
+			f(function(_, snip)
+				return snip.captures[1]
+			end),
+			d(1, get_visual),
+		})
 	),
 
-	-- left/right curly braces
 	s(
 		{
-			trig = "([^%a])l%{",
-			regTrig = true,
-			wordTrig = false,
-			snippetType = "autosnippet",
+			trig = "l3",
+			name = "Curly Brackets",
+			dscr = "Curly brackets with automatic size",
 		},
 		fmta("<>\\left\\{<>\\right\\}", {
 			f(function(_, snip)
@@ -73,13 +61,11 @@ return {
 		})
 	),
 
-	-- big parentheses
 	s(
 		{
-			trig = "([^%a])b%(",
-			regTrig = true,
-			wordTrig = false,
-			snippetType = "autosnippet",
+			trig = "b1",
+			name = "Big Parentheses",
+			dscr = "Paired parentheses with big size",
 		},
 		fmta("<>\\big(<>\\big)", {
 			f(function(_, snip)
@@ -89,13 +75,11 @@ return {
 		})
 	),
 
-	-- big square braces
 	s(
 		{
-			trig = "([^%a])b%[",
-			regTrig = true,
-			wordTrig = false,
-			snippetType = "autosnippet",
+			trig = "b2",
+			name = "Big Square Brackets",
+			dscr = "Sqaure brackets with big size",
 		},
 		fmta("<>\\big[<>\\big]", {
 			f(function(_, snip)
@@ -105,13 +89,11 @@ return {
 		})
 	),
 
-	-- big curly braces
 	s(
 		{
-			trig = "([^%a])b%{",
-			regTrig = true,
-			wordTrig = false,
-			snippetType = "autosnippet",
+			trig = "b3",
+			name = "Big Curly Brackets",
+			dscr = "Curly brackets with big size",
 		},
 		fmta("<>\\big\\{<>\\big\\}", {
 			f(function(_, snip)
@@ -121,27 +103,11 @@ return {
 		})
 	),
 
-	-- escaped curly braces
-	s(
-		{
-			trig = "([^%a])\\%{",
-			regTrig = true,
-			wordTrig = false,
-			snippetType = "autosnippet",
-			priority = 2000,
-		},
-		fmta("<>\\{<>\\}", {
-			f(function(_, snip)
-				return snip.captures[1]
-			end),
-			d(1, get_visual),
-		})
-	),
-
-	-- quotation mark
 	s(
 		{
 			trig = "``",
+			name = "Quotation Mark",
+			dscr = "Quotation mark",
 			snippetType = "autosnippet",
 		},
 		fmta("``<>''", {

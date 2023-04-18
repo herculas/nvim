@@ -22,11 +22,12 @@ local line_begin = require("luasnip.extras.expand_conditions").line_begin
 
 return {
 
-	-- generic environment
 	s(
 		{
-			trig = "new",
-			snippetType = "autosnippet",
+			trig = "env1",
+			name = "Generic Environment",
+			dscr = "Basic environment declaration",
+			-- snippetType = "autosnippet",
 		},
 		fmta(
 			[[
@@ -45,11 +46,12 @@ return {
 		}
 	),
 
-	-- environment with one extra argument
 	s(
 		{
-			trig = "n2",
-			snippetType = "autosnippet",
+			trig = "env2",
+			name = "Generic Environment",
+			dscr = "Environment with an extra argument",
+			-- snippetType = "autosnippet",
 		},
 		fmta(
 			[[
@@ -69,11 +71,12 @@ return {
 		}
 	),
 
-	-- environment with two extra arguments
 	s(
 		{
-			trig = "n3",
-			snippetType = "autosnippet",
+			trig = "env3",
+			name = "Generic Environment",
+			dscr = "Environment with two extra arguments",
+			-- snippetType = "autosnippet",
 		},
 		fmta(
 			[[
@@ -92,6 +95,24 @@ return {
 		{
 			condition = line_begin,
 		}
+	),
+
+	-- inline math enviroment
+	s(
+		{
+			trig = "$",
+			name = "Inline Math",
+			dscr = "Inline math enviroment",
+			regTrig = true,
+			wordTrig = false,
+			snippetType = "autosnippet",
+		},
+		fmta("<>$<>$", {
+			f(function(_, snip)
+				return snip.captures[1]
+			end),
+			d(1, get_visual),
+		})
 	),
 
 	-- equation
@@ -196,22 +217,6 @@ return {
 				i(0),
 			}
 		)
-	),
-
-	-- inline math
-	s(
-		{
-			trig = "([^%l])mm",
-			regTrig = true,
-			wordTrig = false,
-			snippetType = "autosnippet",
-		},
-		fmta("<>$<>$", {
-			f(function(_, snip)
-				return snip.captures[1]
-			end),
-			d(1, get_visual),
-		})
 	),
 
 	-- inline math on new line

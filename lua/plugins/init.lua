@@ -189,12 +189,7 @@ packer.startup({
 		use({ "hrsh7th/cmp-nvim-lsp-signature-help" })
 
 		-- snippet engine and clips
-		use({
-			"L3MON4D3/LuaSnip",
-			config = function()
-				require("plugins.luasnip")
-			end,
-		})
+		use({ "L3MON4D3/LuaSnip" })
 		use({ "saadparwaiz1/cmp_luasnip" })
 		use({ "rafamadriz/friendly-snippets" }) -- common programming language snippets
 

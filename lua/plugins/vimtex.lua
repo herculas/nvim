@@ -1,5 +1,11 @@
+-- enable viewer
 vim.g.vimtex_view_enabled = 1
-vim.g.vimtex_view_method = "skim" -- vimtex PDF viewer
+
+-- VimTeX viewer in macOS using skim
+vim.g.vimtex_view_method = "skim" -- MacOS
+-- vim.g.vimtex_view_method = "zathura" -- Linux
+-- vim.g.vimtex_view_method = "sumatruaPDF" -- Windows
+
 vim.g.vimtex_mappings_enabled = 1
 vim.g.vimtex_indent_enabled = 1
 vim.g.vimtex_syntax_enabled = 1

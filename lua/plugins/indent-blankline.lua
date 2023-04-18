@@ -11,20 +11,6 @@ indent.setup({
 	show_current_context = true,
 	show_current_context_start = true,
 
-	-- context_patterns = {
-	-- 	"class",
-	-- 	"function",
-	-- 	"method",
-	-- 	"element",
-	-- 	"^if",
-	-- 	"^while",
-	-- 	"^for",
-	-- 	"^object",
-	-- 	"^table",
-	-- 	"block",
-	-- 	"arguments",
-	-- },
-
 	-- excluded filetypes for lines
 	filetype_exclude = {
 		"null-ls-info",

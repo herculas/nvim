@@ -1,4 +1,7 @@
 local null_ls = require_plugin("null-ls")
+if null_ls == nil then
+	return
+end
 
 local formatting = null_ls.builtins.formatting
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})

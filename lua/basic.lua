@@ -39,7 +39,7 @@ vim.o.cmdheight = 2 -- number of lines for command-line
 vim.o.autoread = true -- automatically read files changed outside of nvim
 vim.bo.autoread = true
 
-vim.wo.wrap = true -- not wrapping lines even if longer than the width of window
+vim.wo.wrap = false -- not wrapping lines even if longer than the width of window
 vim.o.whichwrap = "<,>,[,]" -- allow keys move cursor left/right to move to the prev/next line
 
 vim.o.hidden = true -- a buffer becomes hidden when it is abandoned
