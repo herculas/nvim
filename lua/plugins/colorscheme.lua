@@ -1,9 +1,10 @@
-require("catppuccin").setup({
-	flavour = "macchiato",
-	integrations = {
-		cmp = true,
-		mason = true,
-	},
-})
+local dracula = require_plugin("dracula")
+if dracula == nil then
+  return
+end
 
-vim.cmd.colorscheme("catppuccin")
+dracula.setup({
+  show_end_of_buffer = true,
+  italic_comment = true,
+})
+vim.cmd.colorscheme("dracula")

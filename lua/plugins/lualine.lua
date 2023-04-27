@@ -5,7 +5,7 @@ end
 
 lualine.setup({
 	options = { -- style configurations
-		theme = "catppuccin",
+		theme = "dracula-nvim",
 		component_seperators = {
 			left = "|",
 			right = "|",

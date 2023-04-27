@@ -1,155 +1,73 @@
-local common_config = {
-	config_path = vim.fn.stdpath("config"),
+vim.g.encoding = "UTF-8" -- string-encoding used internally
+vim.o.fileencoding = "utf-8" -- file-content encoding for the current buffer
 
-	flags = {
-		enable_split_window = true,
-		enable_magic_search = true,
-		enable_nvim_tree = true,
-		enable_buffer_line = true,
-		enable_telescope = true,
-		enable_comment = true,
-	},
+vim.o.scrolloff = 8 -- minimal number of lines to keep above & below the cursor
+vim.o.sidescrolloff = 8 -- minimal number of columns to keep left & right of cursor
 
-	basic_keys = {
-		leader_key = " ",
+vim.wo.number = true -- print the line number in front of each line
+vim.wo.relativenumber = true -- show the line number relative to the current line
 
-		-- COMMAND
-		c_prev_item = "<C-k>",
-		c_next_item = "<C-j>",
+vim.wo.cursorline = true -- hightlight the current line
 
-		-- NORMAL
-		n_save = "<leader>w", -- for :w
-		n_save_quit = "<leader>wq", -- for :wq
-		n_save_all = "<leader>wa", -- for :wa
-		n_save_all_quit = "<leader>qa", -- for :wqa
-		n_force_quit = "<leader>q", -- for :qa!
+vim.wo.signcolumn = "yes" -- draw the signcolumn, 'yes' means always
 
-		n_v_scroll_down = "<C-j>",
-		n_v_scroll_up = "<C-k>",
-		n_v_scroll_down_giant = "<C-d>",
-		n_v_scroll_up_giant = "<C-u>",
-	},
+vim.wo.colorcolumn = "120" -- highlighted column
 
-	window_keys = {
-		split_horizontally = "sh",
-		split_vertically = "sv",
-		close_current = "sc",
-		close_others = "so",
+vim.o.tabstop = 2 -- number of spaces that a <Tab> in the file counts for
+vim.bo.tabstop = 2
+vim.o.softtabstop = 2 -- number of spaces that a <Tab> counts for while editing
 
-		jump_left = "<leader>h",
-		jump_right = "<leader>l",
-		jump_up = "<leader>k",
-		jump_down = "<leader>j",
+vim.o.shiftround = true -- round indent to multiple of 'shiftwidth'
+vim.o.shiftwidth = 2 -- number of spaces to use for each step of (auto)indent
+vim.bo.shiftwidth = 2
 
-		width_dec = "<C-Left>",
-		width_inc = "<C-Right>",
-		width_dec_giant = "s,",
-		width_inc_giant = "s.",
+vim.o.expandtab = true -- INSERT: use the appropriate number of spaces to insert a <Tab>
+vim.bo.expandtab = true
 
-		height_dec = "<C-Down>",
-		height_inc = "<C-Up>",
-		height_dec_giant = "sj",
-		height_inc_giant = "sk",
+vim.o.autoindent = true -- copy indent from current line when starting a new line
+vim.bo.autoindent = true
+vim.o.smartindent = true -- do smart auto-indenting when starting a new line
 
-		size_equal = "s=",
-	},
+vim.o.ignorecase = true -- ignore case in search patterns
+vim.o.smartcase = true -- override 'ignorecase' if search pattern contains uppercase chars
 
-	nvim_tree_keys = {
-		toggle = "<leader>m",
-		edit = { "<CR>", "<2-LeftMouse>" },
-		system_open = "o",
-		vsplit = "sv",
-		hsplit = "sh",
-		toggle_git_ignored = "i",
-		toggle_dot_files = ".",
-		toggle_custom = "u",
-		refresh = "R",
-		create = "a",
-		remove = "d",
-		rename = "r",
-		cut = "x",
-		copy = "c",
-		paste = "p",
-		copy_name = "y",
-		copy_path = "Y",
-		copy_absolute_path = "gy",
-		toggle_file_info = "I",
-		tab_new = "t",
-		cd = "]",
-		dir_up = "[",
-	},
+vim.o.hlsearch = false -- cancel the highlighting of matched search patterns
+vim.o.incsearch = true -- show the pattern as it was typed so far, incremental searching
 
-	bufferline_keys = {
-		prev_tab = "<C-h>",
-		next_tab = "<C-l>",
-		close_current = "<leader>bc",
-		close_left = "<leader>bh",
-		close_right = "<leader>bl",
-		close_others = "<leader>bo",
-		close_pick = "<leader>bp",
-	},
+vim.o.cmdheight = 2 -- number of lines for command-line
 
-	lsp_keys = {
-		rename = "<leader>rn",
-		code_action = "<leader>ca",
-		format = "<leader>f",
-		definition = "gd",
-		references = "gr",
-		hover = "gh",
+vim.o.autoread = true -- automatically read files changed outside of nvim
+vim.bo.autoread = true
 
-		-- diagnostics
-		open_flow = "gp",
-		goto_next = "gj",
-		goto_prev = "gk",
-	},
+vim.wo.wrap = false -- not wrapping lines even if longer than the width of window
+vim.o.whichwrap = "<,>,[,]" -- allow keys move cursor left/right to move to the prev/next line
 
-	cmp_keys = {
-		complete = "<C-.>",
-		abort = "<C-,>",
-		confirm = "<CR>",
-		scroll_doc_up = "<C-u>",
-		scroll_doc_down = "<C-d>",
-		select_next_item = "<Tab>",
-		select_prev_item = "<S-Tab>",
-	},
+vim.o.hidden = true -- a buffer becomes hidden when it is abandoned
 
-	lua_snip_keys = {
-		jump_next = "<C-l>",
-		jump_prev = "<C-h>",
-		next_choice = "<Tab>",
-		prev_choice = "<S-Tab>",
-	},
+vim.o.mouse = "a" -- enable mouse support, 'a' means support all modes
 
-	comment_keys = {
-		toggler = { -- NORMAL mode
-			line = "gcc",
-			block = "gbc",
-		},
-		opleader = { -- VISUAL mode
-			line = "gc",
-			block = "gb",
-		},
-	},
+vim.o.backup = false -- cancel backup files
+vim.o.writebackup = false -- cancel backup files
+vim.o.swapfile = false -- cancel swap files for the buffer
 
-	telescope_keys = {
-		find_files = "<C-p>",
-		live_grep = "<C-f>",
+vim.o.updatetime = 300 -- swap file written to disk if nothing is typed in 300 ms
+vim.o.timeoutlen = 800 -- time to wait for a mapped sequence to complete
 
-		-- move up/down
-		move_selection_next = "<C-j>",
-		move_selection_prev = "<C-k>",
+vim.o.splitbelow = true -- put the splitted window below the current one (:split)
+vim.o.splitright = true -- put the splitted window to the right of the current one (:vsplit)
 
-		-- history record
-		cycle_history_next = "<Down>",
-		cycle_history_prev = "<Up>",
+-- options for INSERT mode completion:
+--    menu:      use a popup menu to show possible options
+--    menuone:   hse the popup menu also when there is only one match
+--    noinsert:  do not insert any text for a match until the user selects
+--    noselect:  do not select a match and force the user to select one
+vim.g.completeopt = "menu,menuone,noselect,noinsert"
 
-		-- colse the window
-		close = "<Esc>",
+vim.o.termguicolors = true -- enable 24-bit RGB color in the terminal UI (TUI)
+vim.opt.termguicolors = true
 
-		-- preview scrolling
-		preview_scrolling_up = "<C-u>",
-		preview_scrolling_down = "<C-d>",
-	},
-}
-
-return common_config
+vim.o.wildmenu = true -- command-line completion operates in enhanced mode
+vim.o.shortmess = vim.o.shortmess .. "c" -- do not give ins-completion-menu messages
+vim.o.pumheight = 10 -- maximum number of items to show in the popup menu
+vim.o.showtabline = 2 -- always show the tabline
+vim.o.showmode = false -- cancel the display of modes

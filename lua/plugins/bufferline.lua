@@ -1,8 +1,3 @@
-local config = require("config")
-if config.bufferline_keys == nil or not config.flags.enable_buffer_line then
-	return
-end
-
 local bufferline = require_plugin("bufferline")
 if bufferline == nil then
 	return
@@ -13,11 +8,15 @@ bufferline.setup({
 	options = {
 		close_command = "Bdelete! %d", -- close tabs
 		right_mouse_command = "Bdelete! %d", -- close tabs using mouse
+    separator_style = "thick", -- appearance of the separators
 		offsets = { -- side column for nvim-tree
-			filetype = "NvimTree",
-			text = "File Explorer",
-			highlight = "Directory",
-			text_align = "left",
+      {
+        filetype = "NvimTree",
+        text = "File Explorer",
+        highlight = "Directory",
+        text_align = "center",
+        separator = true,
+      },
 		},
 		diagnostics = "nvim_lsp", -- LSP
 		diagnostics_indicator = function(_, _, diagnostics_dict, _)
@@ -29,28 +28,23 @@ bufferline.setup({
 			return s
 		end,
 	},
-	highlights = require("catppuccin.groups.integrations.bufferline").get(),
 })
 
 -----------------------------------------------------------------------------------------------------------------------
 -- bufferline key shortcuts
 -----------------------------------------------------------------------------------------------------------------------
 
-local bufferline_keys = config.bufferline_keys
-
 -- NORMAL: switch between tabs
-keymap("n", bufferline_keys.prev_tab, ":BufferLineCyclePrev<CR>")
-keymap("n", bufferline_keys.next_tab, ":BufferLineCycleNext<CR>")
+keymap("n", "<C-h>", ":BufferLineCyclePrev<CR>")
+keymap("n", "<C-l>", ":BufferLineCycleNext<CR>")
 
--- NORMAL: close current buffer
-keymap("n", bufferline_keys.close_current, ":Bdelete!<CR>")
+-- NORMAL: close current/other tab(s)
+keymap("n", "<leader>bc", ":Bdelete!<CR>")
+keymap("n", "<leader>bo", ":BufferLineCloseRight<CR>:BufferLineCloseLeft<CR>")
 
 -- NORMAL: close the tab on the left/right
-keymap("n", bufferline_keys.close_left, ":BufferLineCloseLeft<CR>")
-keymap("n", bufferline_keys.close_right, ":BufferLineCloseRight<CR>")
-
--- NORMAL: close other tabs
-keymap("n", bufferline_keys.close_others, ":BufferLineCloseRight<CR>:BufferLineCloseLeft<CR>")
+keymap("n", "<leader>bh", ":BufferLineCloseLeft<CR>")
+keymap("n", "<leader>bl", ":BufferLineCloseRight<CR>")
 
 -- NORMAL: close selected tab
-keymap("n", bufferline_keys.close_pick, ":BufferLinePickClose<CR>")
+keymap("n", "<leader>bp", ":BufferLinePickClose<CR>")

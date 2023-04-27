@@ -1,14 +1,7 @@
--- basic settings
-require("basic")
+require("utils.global") -- global settings
 
--- global settings
-require("utils.global")
+require("config") -- basic settings
+require("keymap") -- keymapping
 
--- shortcuts
-require("shortcut")
-
--- plugin settings
-require("plugins")
-
--- language server settings
-require("lsp")
+require("plugins") -- plugin settings
+require("lsp") -- language server protocol settings

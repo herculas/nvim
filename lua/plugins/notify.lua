@@ -1,11 +1,11 @@
 local notify = require_plugin("notify")
 if notify == nil then
-	return
+  return
 end
 
 notify.setup({
-	stages = "fade_in_slide_out",
-	timeout = 3500,
+  stages = "fade_in_slide_out",
+  timeout = 3000,
 })
 
 vim.notify = notify

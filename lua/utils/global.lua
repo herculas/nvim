@@ -1,25 +1,4 @@
--- plugin checking
-function _G.require_plugin(name)
-	local status, plugin = pcall(require, name)
-	if not status then
-		vim.notify("[Plugins] not found: " .. name, vim.log.levels.ERROR)
-		return nil
-	end
-	return plugin
-end
-
--- LSP capability
-function _G.lsp_cap()
-	print(vim.inspect(vim.lsp.get_active_clients()[1].resolved_capabilities))
-end
-
--- logs
-function _G.log(v)
-	print(vim.inspect(v))
-	return v
-end
-
--- keymap setting shortcuts
+-- keymap bindings
 function _G.keymap(mode, lhs, rhs, opts)
 	if not (type(lhs) == "string") then
 		return
@@ -33,4 +12,14 @@ function _G.keymap(mode, lhs, rhs, opts)
 		silent = true,
 	}
 	vim.keymap.set(mode, lhs, rhs, vim.tbl_extend("force", default_opts, opts))
+end
+
+-- plugin protected checking
+function _G.require_plugin(name)
+  local status, plugin = pcall(require, name)
+  if not status then
+    vim.notify("[Plugins] " .. name .. " not found!", vim.log.levels.ERROR)
+    return nil
+  end
+  return plugin
 end
