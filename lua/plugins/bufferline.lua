@@ -8,7 +8,7 @@ bufferline.setup({
 	options = {
 		close_command = "Bdelete! %d", -- close tabs
 		right_mouse_command = "Bdelete! %d", -- close tabs using mouse
-    separator_style = "thick", -- appearance of the separators
+    -- separator_style = "thick", -- appearance of the separators
 		offsets = { -- side column for nvim-tree
       {
         filetype = "NvimTree",

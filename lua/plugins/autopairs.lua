@@ -16,7 +16,6 @@ autopairs.setup({
 -- insert `(` after selecting function or method items
 local cmp_autopairs = require_plugin("nvim-autopairs.completion.cmp")
 local cmp = require_plugin("cmp")
-
 if cmp_autopairs == nil or cmp == nil then
 	return
 end

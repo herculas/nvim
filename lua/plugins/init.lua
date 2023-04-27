@@ -79,6 +79,61 @@ packer.startup({
         require("plugins.bufferline")
       end,
     })
+
+    -- nvim-treesitter: code highlighting
+    use({
+      "nvim-treesitter/nvim-treesitter",
+      run = ":TSUpdate",
+      requires = {
+        "nvim-treesitter/nvim-treesitter-refactor",
+        "nvim-treesitter/nvim-treesitter-textobjects",
+      },
+      config = function()
+        require("plugins.treesitter")
+      end,
+    })
+
+    -- indent-blankline: UI enhancement for context identification
+    use({
+      "lukas-reineke/indent-blankline.nvim",
+      config = function()
+        require("plugins.blankline")
+      end,
+    })
+
+    -- nvim-autopairs: automatically generate paired characters
+    use({
+      "windwp/nvim-autopairs",
+      config = function()
+        require("plugins.autopairs")
+      end,
+    })
+
+    -- null-ls: automatic formatting
+    use({
+      "jose-elias-alvarez/null-ls.nvim",
+      requires = "nvim-lua/plenary.nvim",
+      config = function()
+        require("plugins.null-ls")
+      end,
+    })
+
+    -------------------------------------------------------------------------------------------------------------------
+    -- Language Server Protocols
+    -------------------------------------------------------------------------------------------------------------------
+
+    -- completion core engine
+    use({ "hrsh7th/nvim-cmp" })
+
+    -- completion sources
+    use({ "hrsh7th/vim-vsnip" })
+    use({ "hrsh7th/cmp-vsnip" })
+    use({ "hrsh7th/cmp-nvim-lsp" })
+    use({ "hrsh7th/cmp-buffer" })
+    use({ "hrsh7th/cmp-path" })
+    use({ "hrsh7th/cmp-cmdline" })
+    use({ "hrsh7th/cmp-nvim-lsp-signature-help" })
+
   end,
   config = {
     max_jobs = 16, -- max jobs for concurrent setup
