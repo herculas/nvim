@@ -7,12 +7,12 @@ lualine.setup({
 	options = { -- style configurations
 		theme = "dracula-nvim",
 		component_seperators = {
-			left = "|",
-			right = "|",
+			left = "",
+			right = "",
 		},
 		section_seperators = {
-			left = "",
-			right = "",
+			left = "",
+			right = "",
 		},
 		globalstatus = true,
 	},

@@ -25,6 +25,5 @@ indent.setup({
 		"toggleterm",
 		"text",
 	},
-
 	char = "▏",
 })
