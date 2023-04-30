@@ -1,10 +1,24 @@
-local dracula = require_plugin("dracula")
-if dracula == nil then
-  return
+local catppuccin = require_plugin("catppuccin")
+if catppuccin == nil then
+	return
 end
 
-dracula.setup({
-  show_end_of_buffer = true,
-  italic_comment = true,
+catppuccin.setup({
+	flavour = "macchiato",
+	integrations = {
+		cmp = true,
+		dashboard = true,
+		gitsigns = true,
+		mason = true,
+		notify = true,
+		nvimtree = true,
+		telescope = true,
+		treesitter = true,
+	},
+	indent_blankline = {
+		enabled = true,
+		colored_indent_levels = false,
+	},
 })
-vim.cmd.colorscheme("dracula")
+
+vim.cmd.colorscheme("catppuccin")

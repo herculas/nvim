@@ -9,13 +9,13 @@ bufferline.setup({
 		close_command = "Bdelete! %d", -- close tabs
 		right_mouse_command = "Bdelete! %d", -- close tabs using mouse
 		offsets = { -- side column for nvim-tree
-      {
-        filetype = "NvimTree",
-        text = "File Explorer",
-        highlight = "Directory",
-        text_align = "center",
-        separator = true,
-      },
+			{
+				filetype = "NvimTree",
+				text = "File Explorer",
+				highlight = "Directory",
+				text_align = "center",
+				separator = true,
+			},
 		},
 		diagnostics = "nvim_lsp", -- LSP
 		diagnostics_indicator = function(_, _, diagnostics_dict, _)
@@ -27,6 +27,7 @@ bufferline.setup({
 			return s
 		end,
 	},
+	highlights = require("catppuccin.groups.integrations.bufferline").get(),
 })
 
 -----------------------------------------------------------------------------------------------------------------------
