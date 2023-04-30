@@ -11,16 +11,14 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 local opt_remap = {
-  noremap = false,
-  silent = true,
+	noremap = false,
+	silent = true,
 }
 
 local opt_expr = {
-  expr = true,
-  silent = true,
+	expr = true,
+	silent = true,
 }
-
-local exports = {}
 
 -----------------------------------------------------------------------------------------------------------------------
 -- Basic keymaps and shortcuts

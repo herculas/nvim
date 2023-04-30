@@ -28,8 +28,14 @@ end
 -- Packer.nvim setup
 packer.startup({
 	function(use)
-		-- Packer.nvim: the package manager can manage itself
+		-------------------------------------------------------------------------------------------------------------------
+		-- Packer.nvim: the package manager which can manage itself
+		-------------------------------------------------------------------------------------------------------------------
 		use("wbthomason/packer.nvim")
+
+		-------------------------------------------------------------------------------------------------------------------
+		-- Basic Plugins
+		-------------------------------------------------------------------------------------------------------------------
 
 		-- nvim-notify: override the default notification persentation
 		use({
@@ -136,8 +142,29 @@ packer.startup({
 			end,
 		})
 
+		-- telescope: fuzzy finder over lists
+		use({
+			"nvim-telescope/telescope.nvim",
+			requires = {
+				"nvim-lua/plenary.nvim",
+				"LinArcX/telescope-env.nvim",
+				"nvim-telescope/telescope-ui-select.nvim",
+			},
+			config = function()
+				require("plugins.telescope")
+			end,
+		})
+
+		-- project.nvim: all-in-one project management
+		use({
+			"ahmedkhalf/project.nvim",
+			config = function()
+				require("plugins.project")
+			end,
+		})
+
 		-------------------------------------------------------------------------------------------------------------------
-		-- Language Server Protocols
+		-- LSP and Completion Settings
 		-------------------------------------------------------------------------------------------------------------------
 
 		-- completion core engine
@@ -151,6 +178,35 @@ packer.startup({
 		use({ "hrsh7th/cmp-path" })
 		use({ "hrsh7th/cmp-cmdline" })
 		use({ "hrsh7th/cmp-nvim-lsp-signature-help" })
+
+		-- Mason LSP engine
+		use({
+			"williamboman/mason.nvim",
+			run = ":MasonUpdate",
+		})
+
+		-- Mason LSP config
+		use({
+			"williamboman/mason-lspconfig.nvim",
+		})
+
+		-- Neovim LSP built-in config settings
+		use({
+			"neovim/nvim-lspconfig",
+		})
+
+		-- snippet engine
+		use({ "L3MON4D3/LuaSnip" })
+		use({ "saadparwaiz1/cmp_luasnip" })
+		use({ "rafamadriz/friendly-snippets" })
+
+		-- misc
+		use({ "onsails/lspkind-nvim" }) -- vscode-like pictograms for neovim built-in LSP
+		use({ "folke/neodev.nvim" }) -- signature help, docs and completion for neovim lua API
+
+		if packer_bootstrap then
+			packer.sync()
+		end
 	end,
 	config = {
 		max_jobs = 16, -- max jobs for concurrent setup
