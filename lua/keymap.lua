@@ -80,8 +80,8 @@ keymap("v", "p", '"_dp')
 
 -- NORMAL & VISUAL: magical searching
 
-keymap("n", "/", "/\\v", { noremap = true, silent = false })
-keymap("v", "/", "/\\v", { noremap = true, silent = false })
+-- keymap("n", "/", "/\\v", { noremap = true, silent = false })
+-- keymap("v", "/", "/\\v", { noremap = true, silent = false })
 
 -----------------------------------------------------------------------------------------------------------------------
 -- Window Splitting

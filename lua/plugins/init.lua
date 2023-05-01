@@ -173,6 +173,14 @@ packer.startup({
 			end,
 		})
 
+		-- aerial.nvim: code outline navigation
+		use({
+			"stevearc/aerial.nvim",
+			config = function()
+				require("plugins.aerial")
+			end,
+		})
+
 		-------------------------------------------------------------------------------------------------------------------
 		-- LSP and Completion Settings
 		-------------------------------------------------------------------------------------------------------------------
@@ -183,10 +191,11 @@ packer.startup({
 		-- completion sources
 		use({ "hrsh7th/vim-vsnip" })
 		use({ "hrsh7th/cmp-vsnip" })
-		use({ "hrsh7th/cmp-nvim-lsp" })
-		use({ "hrsh7th/cmp-buffer" })
-		use({ "hrsh7th/cmp-path" })
-		use({ "hrsh7th/cmp-cmdline" })
+		use({ "hrsh7th/cmp-nvim-lsp" }) -- basic completion config
+		use({ "hrsh7th/cmp-buffer" }) -- completion for buffer
+		use({ "hrsh7th/cmp-path" }) -- completion for path
+		use({ "hrsh7th/cmp-cmdline" }) -- completion for command lines
+		use({ "f3fora/cmp-spell" }) -- spell check
 		use({ "hrsh7th/cmp-nvim-lsp-signature-help" })
 
 		-- Mason LSP engine
@@ -195,24 +204,18 @@ packer.startup({
 			run = ":MasonUpdate",
 		})
 
-		-- Mason LSP config
-		use({
-			"williamboman/mason-lspconfig.nvim",
-		})
-
-		-- Neovim LSP built-in config settings
-		use({
-			"neovim/nvim-lspconfig",
-		})
+		-- LSP configuration
+		use({ "neovim/nvim-lspconfig" })
+		use({ "williamboman/mason-lspconfig.nvim" })
 
 		-- snippet engine
 		use({ "L3MON4D3/LuaSnip" })
 		use({ "saadparwaiz1/cmp_luasnip" })
 		use({ "rafamadriz/friendly-snippets" })
 
-		-- misc
-		use({ "onsails/lspkind-nvim" }) -- vscode-like pictograms for neovim built-in LSP
-		use({ "folke/neodev.nvim" }) -- signature help, docs and completion for neovim lua API
+		-- miscellaneous
+		use({ "onsails/lspkind-nvim" })
+		use({ "folke/neodev.nvim" })
 
 		if packer_bootstrap then
 			packer.sync()

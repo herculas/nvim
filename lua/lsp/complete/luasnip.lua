@@ -5,8 +5,8 @@ if luasnip == nil or types == nil then
 	return
 end
 
--- custom snippets
-require("luasnip.loaders.from_lua").lazy_load({
+require("luasnip.loaders.from_vscode").lazy_load() -- load friendly-snippts
+require("luasnip.loaders.from_lua").lazy_load({ -- load custom snippets
 	paths = "~/.config/nvim/lua/snippets/",
 })
 

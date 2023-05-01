@@ -1,5 +1,5 @@
-local cmp = require_plugin("cmp")
 local luasnip = require_plugin("luasnip")
+local cmp = require_plugin("cmp")
 
 if cmp == nil or luasnip == nil then
 	return
@@ -43,6 +43,7 @@ cmp.setup({
 		{ name = "nvim_lsp_signature_help", group_index = 1 },
 		{ name = "buffer", group_index = 2 },
 		{ name = "path", group_index = 2 },
+		{ name = "spell", group_index = 2 },
 	}),
 	formatting = require("lsp.complete.lspkind").formatting,
 })
