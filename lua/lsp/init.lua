@@ -21,12 +21,14 @@ mason.setup({
 mason_config.setup({
 	ensure_installed = {
 		"lua_ls",
+		"clangd",
 	},
 })
 
 -- concrete configurations for language servers
 local servers = {
 	lua_ls = require("lsp.servers.lua"),
+	clangd = require("lsp.servers.clang"),
 }
 
 for name, config in pairs(servers) do
