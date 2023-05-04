@@ -6,14 +6,8 @@ end
 lualine.setup({
 	options = { -- style configurations
 		theme = "catppuccin",
-		component_seperators = {
-			left = "",
-			right = "",
-		},
-		section_seperators = {
-			left = "",
-			right = "",
-		},
+		component_separators = { left = "", right = "" },
+		section_separators = { left = "", right = "" },
 		globalstatus = true,
 	},
 	extensions = { "nvim-tree" }, -- extensions support
@@ -23,12 +17,12 @@ lualine.setup({
 			{
 				"lsp_progress",
 				spinner_symbols = {
-					" ",
-					" ",
-					" ",
-					" ",
-					" ",
-					" ",
+					"⠁",
+					"⠃",
+					"⠇",
+					"⠧",
+					"⠷",
+					"⠿",
 				},
 			},
 		},
