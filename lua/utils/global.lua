@@ -16,10 +16,10 @@ end
 
 -- plugin protected checking
 function _G.require_plugin(name)
-  local status, plugin = pcall(require, name)
-  if not status then
-    vim.notify("[Plugins] " .. name .. " not found!", vim.log.levels.ERROR)
-    return nil
-  end
-  return plugin
+	local status, plugin = pcall(require, name)
+	if not status then
+		vim.notify("[Plugins] " .. name .. " not found!", vim.log.levels.ERROR)
+		return nil
+	end
+	return plugin
 end
