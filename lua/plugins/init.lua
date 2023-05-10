@@ -35,6 +35,8 @@ lazy.setup({
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
+		lazy = false,
+		priority = 1000,
 		config = function()
 			require("plugins.colorscheme")
 		end,
@@ -174,22 +176,25 @@ lazy.setup({
 		end,
 	},
 
-	-------------------------------------------------------------------------------------------------------------------
+	---------------------------------------------------------------------------------------------------------------------
 	-- LSP and Completion Settings
-	-------------------------------------------------------------------------------------------------------------------
+	---------------------------------------------------------------------------------------------------------------------
 
-	-- completion core engine
-	{ "hrsh7th/nvim-cmp" },
-
-	-- completion sources
-	{ "hrsh7th/vim-vsnip" },
-	{ "hrsh7th/cmp-vsnip" },
-	{ "hrsh7th/cmp-nvim-lsp" }, -- basic completion config
-	{ "hrsh7th/cmp-buffer" }, -- completion for buffer
-	{ "hrsh7th/cmp-path" }, -- completion for path
-	{ "hrsh7th/cmp-cmdline" }, -- completion for command lines
-	{ "f3fora/cmp-spell" }, -- spell check
-	{ "hrsh7th/cmp-nvim-lsp-signature-help" },
+	-- completion engine and sources
+	{
+		"hrsh7th/nvim-cmp", -- completion core engine
+		event = "InsertEnter",
+		dependencies = { -- completion sources
+			"hrsh7th/vim-vsnip",
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-vsnip",
+			"hrsh7th/cmp-buffer", -- completion for buffer
+			"hrsh7th/cmp-path", -- completion for path
+			"hrsh7th/cmp-cmdline", -- completion for command lines
+			"f3fora/cmp-spell", -- spell check
+			"hrsh7th/cmp-nvim-lsp-signature-help",
+		},
+	},
 
 	-- Mason LSP engine
 	{
