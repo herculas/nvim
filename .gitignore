@@ -41,3 +41,6 @@ luac.out
 
 .DS_Store
 plugin
+
+# Lazy.nvim lock files
+lazy-lock.json
