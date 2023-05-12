@@ -68,6 +68,7 @@ lazy.setup(
 		-- bufferline: header for tabs
 		{
 			"akinsho/bufferline.nvim",
+			event = "BufReadPost",
 			dependencies = {
 				"catppuccin/nvim",
 				"nvim-tree/nvim-web-devicons",
@@ -82,6 +83,7 @@ lazy.setup(
 		{
 			"nvim-treesitter/nvim-treesitter",
 			build = ":TSUpdate",
+			event = "BufReadPost",
 			dependencies = {
 				"nvim-treesitter/nvim-treesitter-refactor",
 				"nvim-treesitter/nvim-treesitter-textobjects",
@@ -94,6 +96,7 @@ lazy.setup(
 		-- indent-blankline: UI enhancement for context identification
 		{
 			"lukas-reineke/indent-blankline.nvim",
+			event = "BufReadPost",
 			dependencies = {
 				"catppuccin/nvim",
 			},
@@ -113,7 +116,7 @@ lazy.setup(
 		-- null-ls: automatic formatting
 		{
 			"jose-elias-alvarez/null-ls.nvim",
-			lazy = true,
+			event = "InsertEnter",
 			dependencies = "nvim-lua/plenary.nvim",
 			config = function()
 				require("plugins.null-ls")
@@ -123,6 +126,7 @@ lazy.setup(
 		-- Comment.nvim: fast (un)commenting
 		{
 			"numToStr/Comment.nvim",
+			event = "InsertEnter",
 			config = function()
 				require("plugins.comment")
 			end,
@@ -131,6 +135,7 @@ lazy.setup(
 		-- gitsigns.nvim: git status display
 		{
 			"lewis6991/gitsigns.nvim",
+			event = "BufReadPre",
 			config = function()
 				require("plugins.gitsigns")
 			end,
@@ -139,6 +144,7 @@ lazy.setup(
 		-- telescope: fuzzy finder over lists
 		{
 			"nvim-telescope/telescope.nvim",
+			event = "BufReadPost",
 			dependencies = {
 				"nvim-lua/plenary.nvim",
 				"LinArcX/telescope-env.nvim",
