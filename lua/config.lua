@@ -58,7 +58,7 @@ vim.o.splitright = true -- put the splitted window to the right of the current o
 
 -- options for INSERT mode completion:
 --    menu:      use a popup menu to show possible options
---    menuone:   hse the popup menu also when there is only one match
+--    menuone:   use the popup menu also when there is only one match
 --    noinsert:  do not insert any text for a match until the user selects
 --    noselect:  do not select a match and force the user to select one
 vim.g.completeopt = "menu,menuone,noselect,noinsert"

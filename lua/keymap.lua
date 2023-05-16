@@ -44,23 +44,17 @@ keymap("v", "g_", "$")
 keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", opt_expr)
 keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", opt_expr)
 
--- NORMAL: scroll in baby step
+-- NORMAL & VISUAL: scroll in baby step
 
 keymap("n", "<C-j>", "10j")
 keymap("n", "<C-k>", "10k")
-
--- VISUAL: scroll in baby step
-
 keymap("v", "<C-j>", "10j")
 keymap("v", "<C-k>", "10k")
 
--- NORMAL: scroll in giant step
+-- NORMAL & VISUAL: scroll in giant step
 
 keymap("n", "<C-d>", "30j")
 keymap("n", "<C-u>", "30k")
-
--- VISUAL: scroll in giant step
-
 keymap("v", "<C-d>", "30j")
 keymap("v", "<C-u>", "30k")
 
