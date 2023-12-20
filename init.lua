@@ -1,5 +1,4 @@
-require("utils.global") -- global settings
-
+require("utils") -- global settings
 require("config") -- basic settings
 require("keymap") -- keymapping
 require("plugins") -- plugin settings
